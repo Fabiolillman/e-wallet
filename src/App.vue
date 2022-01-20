@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="App">
+    <nav>
+      <a @click="currentView='home'">Home</a>
+      <a @click="currentView='create'">Create</a>
+    </nav>
+  <Home v-if="currentView=='home'"/>
+  <Create 
+  v-else-if="currentView=='create'"
+   />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './view/Home.vue'
+import Create from './view/Create.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+  Home,Create
+  },
+
+  data(){return{
+  currentView:'home',
+  cardList:[],
+
+  }},
+
+  methods:{
+  
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
