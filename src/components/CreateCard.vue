@@ -1,18 +1,21 @@
 <template>
-  <div card>
-    <img src="" alt="">
-     <img src="" alt="">
-      <img src="" alt="">
+  <div class="card-wrapper">
+    <div class="img-container">
+    <img src="../assets/wifi.svg" alt="">
+     <img src="../assets/evil.svg" alt="">
+     </div>
+      <img src="../assets/chip.svg" alt="">
       <p>{{cardInfo.CCV}}</p>
       <div class="wrapper-card-text">
-      <label for="" >CARDHOLDER NAME</label>
+      <!-- <label for="" >CARDHOLDER NAME</label> -->
       <label for="">{{spacedNumbers}}</label>
       </div>
       <div class="wrapper-card-text2">
-      <label for=""> {{cardInfo.cardNumber}} </label>
-      <label for=""></label>
+      <!-- <label for=""> {{cardInfo.cardNumber}} </label> -->
+      <label for="">CARDHOLDER</label>
+      <label for="">VALID THROUGH</label>
       </div>
-       <button @click='call'>Testing</button>
+     
       </div>
 </template>
 
@@ -60,6 +63,27 @@ methods:{
 </script>
 
 <style scoped>
+.card-wrapper{
+ border-radius: 10px;
+ width: 23.875rem;
+ height: 15.063rem;
+ background-color: #D0D0D0;
+ margin: 0 1rem 0 1rem;
+ padding: 0 1rem 0 1rem;
+ box-sizing: border-box;
+ text-align: start ;
+}
+
+.img-container{
+  display: flex;
+  justify-content: space-between;
+  /* margin: 0 1rem 0 1rem; */
+}
+
+.wrapper-card-text2{
+  display: flex;
+  justify-content: space-between;
+}
 
 
 
