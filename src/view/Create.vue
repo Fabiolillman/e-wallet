@@ -89,35 +89,51 @@ components: {
 </script>
  
 <style scoped>
+/* @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&family=Source+Sans+Pro&display=swap%27);
+
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&family=Source+Sans+Pro&display=swap%27);
+
+p,button,input{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+h1{
+font-family: 'Source Sans Pro', sans-serif;
+font-weight: 900; */
 *{
   padding: 0;
   margin: 0;
   list-style: none;
+   box-sizing: border-box;
+  font-size: 18px;
 }
 
 .center-container{
-  background: blue;
+  width: 40rem;
+  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .create-container{
-  width: 30rem;
-  height: 45rem;
-  background: red;
+  width: 25.875rem;
+  height: 56rem;
+  background: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  text-align:center ;
+  /* justify-content: center;
+  align-content: center; */
   
 }
 
 form{
-  width: 80%;
+ 
+  width: 23.875rem;
+  margin: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
-  background: yellow;
+  background: yellow;  
 }
 
 .card-container{
@@ -137,7 +153,19 @@ form{
 .dropdown{
  margin-right: 40%; 
 }
-.dropdown-content{
- 
+/* .dropdown-content{
+
+} */
+
+input{
+  width: 23.875rem;
+  height: 3.5rem;
+  border: 1px solid black;
+  border-radius: 10px;
 }
+
+.card-container>Input{
+width: 11rem;
+}
+
 </style>
