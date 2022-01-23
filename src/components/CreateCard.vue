@@ -8,7 +8,7 @@
       <p>{{cardInfo.CCV}}</p>
       <div class="wrapper-card-text">
       <!-- <label for="" >CARDHOLDER NAME</label> -->
-      <label for="">{{spacedNumbers}}</label>
+      <label for="" placeholder="XXXX XXXX XXXX XXXX" >{{spacedNumbers}}</label>
       </div>
       <div class="wrapper-card-text2">
       <!-- <label for=""> {{cardInfo.cardNumber}} </label> -->
@@ -31,6 +31,10 @@ computed:{
 // //  {{firstName}} + " " {{lastName}}
 //  } 
  spacedNumbers(){
+   if (this.cardInfo.cardNumber===""){
+     this.cardInfo.cardNumber=="xxxx xxxx xxxx xxxx"
+   }
+   
    let space=""
    for (let i = 0; i < this.cardInfo.cardNumber.length; i++) {
        if (i % 4 == 0) {
@@ -77,7 +81,7 @@ methods:{
 .img-container{
   display: flex;
   justify-content: space-between;
-  /* margin: 0 1rem 0 1rem; */
+  padding: 1rem 0 0 0;
 }
 
 .wrapper-card-text2{

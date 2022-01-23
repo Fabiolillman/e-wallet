@@ -2,7 +2,7 @@
 <div class="center-container">
   <div class="create-container">
     <h1>ADD NEW BANK CARD</h1>
-    <p></p>
+    <p>SADAS</p>
     <CreateCard 
  
   :cardInfo="cardInfo"
@@ -27,6 +27,7 @@
 
     </div>
     <p>VENDOR</p>
+    <div class="dropdown-container">
     <div class="dropdown">Drop down list
       <div class="dropdown-content">
         <ul>
@@ -37,6 +38,7 @@
           <li>Chain's Gains</li>
         </ul>
         <button @console="console">CONSOLE</button>
+        </div>
       </div>
     </div>
     </form>
@@ -70,7 +72,7 @@ components: {
   
   cardInfo:{
   vendor:"",
-  cardNumber:"asdasdasdasdas", 
+  cardNumber:"", 
   cardholder:"", 
   expireMonth:"", 
   expireYear:"", 
@@ -127,6 +129,7 @@ font-weight: 900; */
   
 }
 
+
 form{
  
   width: 23.875rem;
@@ -150,12 +153,28 @@ form{
  margin-right: 40%; 
 }
 
-.dropdown{
- margin-right: 40%; 
-}
-/* .dropdown-content{
-
+/* .dropdown-container{
+  display: flex;
+  width: 100%;
+  background: pink;
+  justify-content: center;
+  align-items: center;
+  
 } */
+
+.dropdown{
+  /* display: flex;
+  justify-content: center; */
+ /* margin-right: 40%;  */
+ background: red;
+ width: 100%;
+ height: 3rem;
+
+}
+.dropdown-content{
+background: blue;
+height: 3rem;
+}
 
 input{
   width: 23.875rem;
