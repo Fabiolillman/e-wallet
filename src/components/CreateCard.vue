@@ -8,7 +8,6 @@
      alt="">
      <!-- :style="{ 'background-color': currentColor }" -->
      <!-- <img src="../assets/evil.svg" alt=""> -->
-    <p>{{this.cardInfo.vendor}}</p>
      </div>
       <img src="../assets/chip.svg" alt="">
       <!-- <p>{{cardInfo.CCV}}</p> -->
@@ -54,9 +53,9 @@ computed:{
   imageSelect(){
     if (this.cardInfo.vendor==="Ninja Corp") {
       // this.backgroundColor
-      // document.getElementById("myDiv").style.backgroundColor = "orange"
       return require('../assets/ninja.svg');
     } 
+    
     // return require("../assets/" + this.cardInfo.vendor + ".svg" ) 
 
    return "hello"
@@ -94,13 +93,13 @@ methods:{
 
   backgroundColor(){
     if (this.cardInfo.vendor==="Ninja Corp") {
-      return "orange"   
+      return "rgba(0,0,0,0.5)"   
     } else  if (this.cardInfo.vendor==="Evil Corp") {
-      return this.currentColor="red"   
+      return this.currentColor="#F33355"   
     } else  if (this.cardInfo.vendor==="Bitcoin Empire") {
-      return this.currentColor="purple"   
+      return this.currentColor="#8B58F9"   
     } else  if (this.cardInfo.vendor==="Chain's Gains") {
-      return this.currentColor="orange"   
+      return this.currentColor="#FFAE34"   
     } 
 
      

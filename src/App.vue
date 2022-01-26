@@ -3,6 +3,7 @@
     <nav>
       <a @click="currentView='home'">Home</a>
       <a @click="currentView='create'">Create</a>
+      <!-- <p>{{cardItems.CCV}}</p> -->
     </nav>
   <Home v-if="currentView=='home'"/>
   <Create 
@@ -27,13 +28,17 @@ export default {
   data(){return{
   currentView:'home',
   // cardList:[],
+  fullItemList:[{
+
+  }],
 
   }},
 
   methods:{
   
-  printHomes(){
-    console.log(this.printHomes)
+  printHomes(cardItems){
+    // this.fullItemList.push(cardItems)
+    console.log(cardItems)
   }
   }
 }
