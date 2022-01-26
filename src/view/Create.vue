@@ -9,7 +9,7 @@
     <CreateCard 
   :cardInfo="cardInfo"
    />
-    <form action="" @submit.prevent="">
+    <form action="" @submit.prevent="printHome">
 
     <label for=""  class="top-label">CARD NUMBER</label>
     <input type="number" 
@@ -54,7 +54,8 @@
           <option>Bitcoin Empire</option>     
           <option>Chain's Gains</option>
         </select>
-        <button @printHomes="printHome">ADD CARD</button>
+        <button>ADD CARD</button>
+        <!-- @click="printHome" -->
     </div>
     </form>
   </div>
@@ -75,8 +76,6 @@ export default {
   CCV:"asdasd",
   activeCard:'false'
   },
-
-  cardList:[],
 
   }},
   

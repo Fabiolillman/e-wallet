@@ -5,11 +5,21 @@
       <a @click="currentView='create'">Create</a>
       <!-- <p>{{cardItems.CCV}}</p> -->
     </nav>
-  <Home v-if="currentView=='home'"/>
+  <Home v-if="currentView=='home'"
+  
+  :itemStorage="itemStorage"/>
   <Create 
   v-else-if="currentView=='create'"
   @printToHome="printHomes"
    />
+    <!-- printHomes(cardItems){
+    // this.fullItemList=cardItems
+     this.itemStorage.push(cardItem)
+  } -->
+  <!-- printHomes(cardItems){
+    this.itemStorage.push(cardItems)
+    console.log(cardItems)
+  } -->
    <!-- @printToHome="printHomes" -->
   </div>
 </template>
@@ -28,17 +38,20 @@ export default {
   data(){return{
   currentView:'home',
   // cardList:[],
-  fullItemList:[{
-
-  }],
+  fullItemList: "",
+   currentItem: this.cardItems,
+  itemStorage:[],
 
   }},
 
   methods:{
   
   printHomes(cardItems){
-    // this.fullItemList.push(cardItems)
+    this.itemStorage.push(cardItems)
+    // this.currentItem.push(cardItems)
     console.log(cardItems)
+    console.log(this.itemStorage)
+    
   }
   }
 }

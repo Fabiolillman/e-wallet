@@ -1,5 +1,6 @@
 <template>
   <div class="card-wrapper"
+  @click="$emit('click')"
   :style="{ 'background-color': backgroundColor() }" >
     <div class="img-container">
     <img src="../assets/wifi.svg" alt="">
@@ -10,7 +11,6 @@
      <!-- <img src="../assets/evil.svg" alt=""> -->
      </div>
       <img src="../assets/chip.svg" alt="">
-      <!-- <p>{{cardInfo.CCV}}</p> -->
       <div class="wrapper-card-text">
       <!-- <label for="" >CARDHOLDER NAME</label> -->
       <label for="" class="number-label">{{spacedNumbers}}</label>
@@ -56,7 +56,7 @@ computed:{
       return require('../assets/ninja.svg');
     } 
     
-    // return require("../assets/" + this.cardInfo.vendor + ".svg" ) 
+    // return require(`../assets/ ${ this.cardInfo.vendor}  .svg` ) 
 
    return "hello"
      },
@@ -70,21 +70,16 @@ computed:{
        if (i % 4 == 0) {
             space += " ";
         } 
-        // else if (space.length===16){
-    
-        // }
+      
         space+=this.cardInfo.cardNumber[i]
-        //  if (this.cardInfo.cardNumber.length>16) {
-        //   return 
-        // }
-        if (space.length>19) {
-          return space
-        }
+     
+      //   if (space.length>19) {
+      //     return space
+      //   }
    }
   
       return space
-   
- 
+    
  }
  
 },
@@ -100,10 +95,12 @@ methods:{
       return this.currentColor="#8B58F9"   
     } else  if (this.cardInfo.vendor==="Chain's Gains") {
       return this.currentColor="#FFAE34"   
-    } 
+    }    
+  },
 
-     
-  }
+  // activateCard(){
+  //  this.$emit('activateCard')
+  // },
   // console(){
   //    console.log(this.cardInfo.CCV)
   // }
