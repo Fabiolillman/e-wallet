@@ -7,7 +7,9 @@
   <Home v-if="currentView=='home'"/>
   <Create 
   v-else-if="currentView=='create'"
+  @printToHome="printHomes"
    />
+   <!-- @printToHome="printHomes" -->
   </div>
 </template>
 
@@ -18,17 +20,21 @@ import Create from './view/Create.vue'
 export default {
   name: 'App',
   components: {
-  Home,Create
+  Home, 
+  Create,
   },
 
   data(){return{
   currentView:'home',
-  cardList:[],
+  // cardList:[],
 
   }},
 
   methods:{
   
+  printHomes(){
+    console.log(this.printHomes)
+  }
   }
 }
 </script>

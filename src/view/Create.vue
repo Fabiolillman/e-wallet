@@ -1,45 +1,60 @@
 <template>
 <div class="center-container">
   <div class="create-container">
-    <h1>ADD NEW BANK CARD</h1>
-    <p>SADAS</p>
+    <div class="top-wrap">
+    <h1>ADD A NEW BANK CARD</h1>
+    <p>NEW CARD</p>
+     
+    </div>
     <CreateCard 
- 
   :cardInfo="cardInfo"
    />
     <form action="" @submit.prevent="">
 
-    <label for="cardnumber">CARD NUMBER</label>
-    <input type="text" for v-model="cardInfo.cardNumber">
-
+    <label for=""  class="top-label">CARD NUMBER</label>
+    <input type="number" 
+    v-model="cardInfo.cardNumber"
+    :numbers="numberLimit">
 
      <label for="">CARDHOLDER NAME</label>
-    <input type="text"  >
+    <input type="text" v-model="cardInfo.cardholder" >
 
     <div class="label-container">
-      <label for="">VALID THRU</label>
-       <label for="">CCV</label>
+      <label for="">MONTH</label>
+      
+       <label for="">YEAR</label>
     </div>
 
-    <div class="card-container">     
-    <input type="text">
-    <input type="text">
+    <div class="card-container"> 
+      <select class="dropdown" v-model="cardInfo.expireMonth" >
+
+          <option 
+          v-for="n in 12"
+          :key="n">{{n}}</option>
+          <!-- <option>Evil Corp</option>
+          <option>Bitcoin Empire</option>     
+          <option>Chain's Gains</option> -->
+        </select>    
+        <select class="dropdown" v-model="cardInfo.expireYear">
+          <option>22</option>
+          <option>23</option>
+          <option>24</option>     
+          <option>25</option>
+        </select>
+    <!-- <input type="text"> -->
+    <!-- <input type="text"> -->
 
     </div>
-    <p>VENDOR</p>
+    <label for="">VENDOR</label>
     <div class="dropdown-container">
-    <div class="dropdown">Drop down list
-      <div class="dropdown-content">
-        <ul>
-          <li>Ninja Corp</li>
-          <li>Evil Corp</li>
-          <li>Bitcoin Empire</li>
-           <li>{{cardInfo.CCV}}</li>
-          <li>Chain's Gains</li>
-        </ul>
-        <button @console="console">CONSOLE</button>
-        </div>
-      </div>
+
+       <select class="dropdown" v-model="cardInfo.vendor">
+          <option>Ninja Corp</option>
+          <option>Evil Corp</option>
+          <option>Bitcoin Empire</option>     
+          <option>Chain's Gains</option>
+        </select>
+        <button @printHomes="printHome">ADD CARD</button>
     </div>
     </form>
   </div>
@@ -49,26 +64,7 @@
 <script>
 import CreateCard from '../components/CreateCard.vue'
 export default {
-components: {
-  CreateCard
-  },
- 
- props:[
-  //  'cardInfo'
- ],
-  methods:{
-    console(){
-      // console.log(this.cardInfo)
-    },
-    
-    // console.log(this.cardNumber)
-   
-    submit(){
-      this.$emit('send', {...this.user})
-    }
-  },
-    
- data(){return{
+  data(){return{
   
   cardInfo:{
   vendor:"",
@@ -77,30 +73,53 @@ components: {
   expireMonth:"", 
   expireYear:"", 
   CCV:"asdasd",
+  activeCard:'false'
   },
 
   cardList:[],
 
   }},
+  
+components: {
+  CreateCard
+  },
  
+ props:[
+  //  'cardInfo'
+ ],
+
+ computed:{
+
+ },
+  methods:{
  
+   printHome(){
+ 
+   this.$emit('printToHome', this.cardInfo)
+    },
+  //  addZero(){
+  //    if(this.n>9){
+  //      0+this.n
+  //    }
+  //  }
+    // submit(){
+    //   this.$emit('send', {...this.user})
+    // }
+    // this.input.value
+      numberLimit(){
+  // const numLimit = numbers.target.value;
+   let numberCard = this.cardInfo.cardNumber
+      if (numberCard.length >= 16) {
+        numberCard.preventDefault();
+  }
+  }
+    
 }
-
-
-
+}
 </script>
  
 <style scoped>
-/* @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&family=Source+Sans+Pro&display=swap%27);
 
-@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&family=Source+Sans+Pro&display=swap%27);
-
-p,button,input{
-  font-family: 'Source Sans Pro', sans-serif;
-}
-h1{
-font-family: 'Source Sans Pro', sans-serif;
-font-weight: 900; */
 *{
   padding: 0;
   margin: 0;
@@ -109,9 +128,27 @@ font-weight: 900; */
   font-size: 18px;
 }
 
+.top-wrap h1{
+  padding: 2rem 2rem 0 2rem;
+  /* margin-left: 3rem; */
+
+  /* width: 2rem; */
+  font-size: 40px;
+  /* text-align: center; */
+}
+
+.top-wrap{
+  widows: 100%;
+  text-align: center;
+}
+
+.top-wrap p{
+  margin: 1.5rem 0 1rem 0;
+}
+
 .center-container{
   width: 40rem;
-  background: black;
+  /* background: black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,22 +158,29 @@ font-weight: 900; */
   width: 25.875rem;
   height: 56rem;
   background: white;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   text-align:center ;
   /* justify-content: center;
   align-content: center; */
-  
 }
 
+label{
+  margin: 1rem 0 0 0;
+}
 
 form{
- 
   width: 23.875rem;
   margin: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
-  background: yellow;  
+  /* background: yellow;   */
+  text-align: start;
+}
+
+.top-label{
+margin: 3rem 0 0 0;  
 }
 
 .card-container{
@@ -150,7 +194,7 @@ form{
 }
 
 .label-container > :first-child{
- margin-right: 40%; 
+ margin-right: 25%; 
 }
 
 /* .dropdown-container{
@@ -162,20 +206,39 @@ form{
   
 } */
 
+
 .dropdown{
-  /* display: flex;
-  justify-content: center; */
- /* margin-right: 40%;  */
- background: red;
+ 
+ background: white;
  width: 100%;
- height: 3rem;
-
+ height: 3.5rem;
+ border: 1px solid black;
+ border-radius: 10px;
+ position: relative;
+ 
 }
-.dropdown-content{
-background: blue;
-height: 3rem;
+
+select option{
+background: rgba(111, 111, 111, 1);
+/* height: 6rem; */
+width: 23.8rem;
+border-radius: 10px;
+color: white;
+padding: 0.4rem;
+line-height: 2rem;
+text-align: start;
+/* position: absolute; */
 }
 
+/* option{
+  padding-left:2rem;
+} */
+.dropdown-content option:hover {
+  width: 100%;
+  /* margin: 0 1rem 0 1rem; */
+  background: rgba(80, 144, 234, 1);
+  border-radius: 5px;
+}
 input{
   width: 23.875rem;
   height: 3.5rem;
@@ -186,5 +249,6 @@ input{
 .card-container>Input{
 width: 11rem;
 }
+
 
 </style>
