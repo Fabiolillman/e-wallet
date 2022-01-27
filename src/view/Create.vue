@@ -27,12 +27,14 @@
 
     <div class="card-container"> 
       <select class="dropdown" v-model="cardInfo.expireMonth" >
-
+ <option value="" disabled selected hidden>MM</option>
           <option 
           v-for="n in 12"
           :key="n">{{n}}</option>
         </select>    
         <select class="dropdown" v-model="cardInfo.expireYear">
+          <option value="" disabled selected hidden>YY</option>
+
           <option>22</option>
           <option>23</option>
           <option>24</option>     
@@ -50,7 +52,7 @@
           <option value="blockchain">Chain's Gains</option>
         </select>
         <button @click="sendToAdd">ADD CARD</button>
-        <!-- @click="printHome" -->
+      
     </div>
     </form>
   </div>
@@ -123,6 +125,7 @@ components: {
    box-sizing: border-box;
   font-size: 18px;
 }
+
 /* #App{
   width: 100%;
     display: flex;
@@ -133,23 +136,19 @@ components: {
 .center-container{
   width: 40rem;
   /* background: black; */
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .top-wrap h1{
-  padding: 2rem 2rem 0 2rem;
-  /* margin-left: 3rem; */
-
-  /* width: 2rem; */
+  padding-top: 1rem;
+   height: 98px;
+  width: 250px;
+  margin: auto;
   font-size: 40px;
-  /* text-align: center; */
 }
 
-.top-wrap{
-  widows: 100%;
-  text-align: center;
-}
 
 .top-wrap p{
   margin: 1.5rem 0 1rem 0;
@@ -161,12 +160,13 @@ components: {
   width: 25.875rem;
   height: 56rem;
   background: white;
-  border: 1px solid black;
+  border: 2px solid black;
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.35) ;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   text-align:center ;
-  /* justify-content: center;
-  align-content: center; */
+
 }
 
 label{
@@ -178,7 +178,6 @@ form{
   margin: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
-  /* background: yellow;   */
   text-align: start;
 }
 
@@ -191,34 +190,26 @@ margin: 3rem 0 0 0;
   justify-content: space-between;
 }
 
+.card-container select{
+  width: 45%;
+}
+
 .label-container{
   width: 100%;
   display: flex;
 }
 
 .label-container > :first-child{
- margin-right: 25%; 
+ margin-right: 37%; 
 }
 
-/* .dropdown-container{
-  display: flex;
-  width: 100%;
-  background: pink;
-  justify-content: center;
-  align-items: center;
-  
-} */
-
-
-.dropdown{
- 
+.dropdown{ 
  background: white;
  width: 100%;
  height: 3.5rem;
  border: 1px solid black;
  border-radius: 10px;
  position: relative;
- 
 }
 
 select option{
@@ -230,12 +221,9 @@ color: white;
 padding: 0.4rem;
 line-height: 2rem;
 text-align: start;
-/* position: absolute; */
+
 }
 
-/* option{
-  padding-left:2rem;
-} */
 .dropdown-content option:hover {
   width: 100%;
   /* margin: 0 1rem 0 1rem; */
