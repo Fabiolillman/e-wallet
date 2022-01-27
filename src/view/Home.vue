@@ -58,6 +58,7 @@ components: {
   display: flex;
   flex-direction: column;
   text-align:center ;
+  margin: 0 0 0 5rem;
 }
 .card-grid{
   margin-top: 2.5rem;
@@ -66,8 +67,8 @@ components: {
   /* overflow: scroll; */
 }
 button{
-  margin-top: 14rem;
-  /* width: 23.875rem; */
+  width: 23.875rem;
+  margin: 14rem 1rem 0 1rem;
   height: 5rem;
   font-weight: 600;
   font-size: 1.3rem;
