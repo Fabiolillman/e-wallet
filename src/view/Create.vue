@@ -31,9 +31,6 @@
           <option 
           v-for="n in 12"
           :key="n">{{n}}</option>
-          <!-- <option>Evil Corp</option>
-          <option>Bitcoin Empire</option>     
-          <option>Chain's Gains</option> -->
         </select>    
         <select class="dropdown" v-model="cardInfo.expireYear">
           <option>22</option>
@@ -41,8 +38,6 @@
           <option>24</option>     
           <option>25</option>
         </select>
-    <!-- <input type="text"> -->
-    <!-- <input type="text"> -->
 
     </div>
     <label for="">VENDOR</label>
@@ -54,7 +49,7 @@
           <option>Bitcoin Empire</option>     
           <option>Chain's Gains</option>
         </select>
-        <button>ADD CARD</button>
+        <button @click="sendToAdd">ADD CARD</button>
         <!-- @click="printHome" -->
     </div>
     </form>
@@ -91,7 +86,9 @@ components: {
 
  },
   methods:{
- 
+  sendToAdd(){
+    this.$emit('sendToAddView', "addCardView")
+  },
    printHome(){
  
    this.$emit('printToHome', this.cardInfo)
@@ -126,7 +123,20 @@ components: {
    box-sizing: border-box;
   font-size: 18px;
 }
-
+/* #App{
+  width: 100%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+.center-container{
+  width: 40rem;
+  /* background: black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .top-wrap h1{
   padding: 2rem 2rem 0 2rem;
   /* margin-left: 3rem; */
@@ -145,13 +155,7 @@ components: {
   margin: 1.5rem 0 1rem 0;
 }
 
-.center-container{
-  width: 40rem;
-  /* background: black; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .create-container{
   width: 25.875rem;
@@ -238,7 +242,7 @@ text-align: start;
   background: rgba(80, 144, 234, 1);
   border-radius: 5px;
 }
-input{
+input, button{
   width: 23.875rem;
   height: 3.5rem;
   border: 1px solid black;
@@ -247,6 +251,12 @@ input{
 
 .card-container>Input{
 width: 11rem;
+}
+button{
+  height: 4.5rem;
+  margin: 1rem 0 1rem 0;
+  background: black;
+  color: white;
 }
 
 

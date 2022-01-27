@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="home-wrap">
   <h1>E-WALLET</h1>
   <p>Active Card</p>
 
@@ -9,7 +9,7 @@ v-if="activeCard"
 :cardInfo="activeCard"/>
 
 
-  <p>^</p>
+  
 <div class="card-grid">
 
 
@@ -22,7 +22,7 @@ v-if="activeCard"
 
 
 </div>               
-  <button>ADD A NEW CARD</button>
+  <button @click="changeView">ADD A NEW CARD</button>
 </div>
 </template>
 
@@ -34,7 +34,9 @@ export default {
   ],
 
   methods:{
-  
+  changeView(){
+    this.$emit("addCardView", "AddNewCard")
+  }
   },
    
 components: {
@@ -47,10 +49,27 @@ components: {
 }
 </script>
 
-<style>
+<style scoped>
+.home-wrap{
+   width: 25.875rem;
+  height: 56rem;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  text-align:center ;
+}
 .card-grid{
+  margin-top: 2.5rem;
   display: grid;
   grid-auto-rows: 3rem;
-  
+  /* overflow: scroll; */
+}
+button{
+  margin-top: 14rem;
+  /* width: 23.875rem; */
+  height: 5rem;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 </style>
