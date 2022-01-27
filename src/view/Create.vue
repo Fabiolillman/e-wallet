@@ -44,10 +44,10 @@
     <div class="dropdown-container">
 
        <select class="dropdown" v-model="cardInfo.vendor">
-          <option>Ninja Corp</option>
-          <option>Evil Corp</option>
-          <option>Bitcoin Empire</option>     
-          <option>Chain's Gains</option>
+          <option value="ninja">Ninja Corp</option>
+          <option value="evil">Evil Corp</option>
+          <option value="bitcoin">Bitcoin Empire</option>     
+          <option value="blockchain">Chain's Gains</option>
         </select>
         <button @click="sendToAdd">ADD CARD</button>
         <!-- @click="printHome" -->
@@ -63,12 +63,12 @@ export default {
   data(){return{
   
   cardInfo:{
-  vendor:"",
+  vendor:"ninja",
   cardNumber:"", 
   cardholder:"", 
   expireMonth:"", 
   expireYear:"", 
-  CCV:"asdasd",
+  CCV:"",
   activeCard:'false'
   },
 
