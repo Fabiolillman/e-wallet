@@ -8,18 +8,15 @@
 v-if="activeCard"
 :cardInfo="activeCard"/>
 
-
   
 <div class="card-grid">
-
 
    <CreateCard
    v-for="items in itemStorage" 
    :key="items.cardNumber"
    @click="activeCard = items"
    :cardInfo="items"
-               />
-
+   />
 
 </div>               
   <button @click="changeView">ADD A NEW CARD</button>
@@ -51,14 +48,17 @@ components: {
 
 <style scoped>
 .home-wrap{
-   width: 25.875rem;
-  height: 56rem;
+  margin: auto;
+  width: 25.875rem;
+  min-height: 56rem;
   background: white;
-  border: 1px solid black;
+  border: 2px solid black;
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.35) ;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   text-align:center ;
-  margin: 0 0 0 5rem;
+
 }
 .card-grid{
   margin-top: 2.5rem;

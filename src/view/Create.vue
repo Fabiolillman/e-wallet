@@ -11,18 +11,26 @@
    />
     <form action="" @submit.prevent="printHome">
 
-    <label for=""  class="top-label">CARD NUMBER</label>
+    <label for="" v-if="this.errorNumber === true" class="top-label">CARD NUMBER</label>
+    <label v-if="this.errorNumber === false" class="top-label error-number">MISSING CARD NUMBER</label>
     <input type="number" 
+    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
     v-model="cardInfo.cardNumber"
+    maxlength = "16"
     :numbers="numberLimit">
 
-     <label for="">CARDHOLDER NAME</label>
-    <input type="text" v-model="cardInfo.cardholder" >
+     <label for="" v-if="this.errorName === true"  >CARDHOLDER NAME</label>
+     <label v-if="this.errorName === false" class="error-name">MISSING CARDHOLDER NAME</label>
+    <input type="text" v-model="cardInfo.cardholder"
+     @keydown="checkKeyDownAlphaNumeric($event)"
+     maxlength = "24"
+     >
 
     <div class="label-container">
-      <label for="">MONTH</label>
-      
-       <label for="">YEAR</label>
+      <label v-if="this.errorMonth === false" class="error-name">MISSING MONTH</label>
+      <label v-if="this.errorMonth === true" for="">MONTH</label>
+      <label v-if="this.errorYear === false" class="error-name">MISSING YEAR</label>
+       <label for="" v-if="this.errorYear === true">YEAR</label>
     </div>
 
     <div class="card-container"> 
@@ -73,6 +81,10 @@ export default {
   CCV:"",
   activeCard:'false'
   },
+  errorNumber: true,
+  errorName: true,
+  errorMonth: true,
+  errorYear: true,
 
   }},
   
@@ -88,8 +100,35 @@ components: {
 
  },
   methods:{
-  sendToAdd(){
-    this.$emit('sendToAddView', "addCardView")
+ checkKeyDownAlphaNumeric(event) {
+      if (!/[a-zA-Z\s]/.test(event.key)) {
+        this.ignoredValue = event.key ? event.key : "";
+        event.preventDefault();
+      }},
+  
+  sendToAdd(e){
+      if (this.cardInfo.cardNumber!== "" && 
+      this.cardInfo.cardholder!== "" && 
+      this.cardInfo.expireYear.length>0&& 
+      this.cardInfo.expireMonth.length>0 ) {
+        this.$emit('sendToAddView', "addCardView")
+      }
+     else if(this.cardInfo.cardNumber === "") {
+     this.errorNumber=false
+     e.preventDefault();
+     } 
+     else if(this.cardInfo.cardholder=== ""){
+     this.errorName=false
+     e.preventDefault();
+     }
+      else if(this.cardInfo.expireMonth=== ""){
+     this.errorMonth=false
+     e.preventDefault();
+     }
+      else if(this.cardInfo.expireYear=== ""){
+     this.errorYear=false
+     e.preventDefault();
+     }
   },
    printHome(){
  
@@ -158,7 +197,7 @@ components: {
 
 .create-container{
   width: 25.875rem;
-  height: 56rem;
+  min-height: 56rem;
   background: white;
   border: 2px solid black;
   box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.35) ;
@@ -183,6 +222,10 @@ form{
 
 .top-label{
 margin: 3rem 0 0 0;  
+}
+
+.error-number,.error-name{
+  color: red;
 }
 
 .card-container{
