@@ -113,22 +113,23 @@ components: {
       this.cardInfo.expireMonth.length>0 ) {
         this.$emit('sendToAddView', "addCardView")
       }
-     else if(this.cardInfo.cardNumber === "") {
+
+     if(!this.cardInfo.cardNumber ) {
      this.errorNumber=false
      e.preventDefault();
-     } 
-     else if(this.cardInfo.cardholder=== ""){
+     } else{this.errorNumber=true}
+      if(!this.cardInfo.cardholder){
      this.errorName=false
      e.preventDefault();
-     }
-      else if(this.cardInfo.expireMonth=== ""){
+     } else{this.errorName=true}
+      if(!this.cardInfo.expireMonth){
      this.errorMonth=false
      e.preventDefault();
-     }
-      else if(this.cardInfo.expireYear=== ""){
+     } else{this.errorMonth=true}
+       if(!this.cardInfo.expireYear){
      this.errorYear=false
      e.preventDefault();
-     }
+     } else{this.errorYear=true}
   },
    printHome(){
  
