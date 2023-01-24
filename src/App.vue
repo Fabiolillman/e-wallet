@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import Home from './view/Home.vue'
-import Create from './view/Create.vue'
+import Home from './view/HomeComponent.vue.vue'
+import Create from './view/CreateComponent.vue.vue'
 
 export default {
   name: 'App',
